@@ -10,17 +10,16 @@
 <style>
   :root {
     --google-blue: #1a73e8;
+    --google-blue-bg: #e8f0fe;
     --google-red: #d93025;
     --google-red-bg: #fce8e6;
-    --google-yellow: #f9ab00;
-    --google-green: #1e8e3e;
     --text-primary: #202124;
     --text-secondary: #5f6368;
-    --text-tertiary: #80868b;
-    --border: #dadce0;
+    --text-tertiary: #9aa0a6;
+    --border: #e8eaed;
+    --border-soft: #f1f3f4;
     --surface: #ffffff;
-    --bg: #f8f9fa;
-    --hover: #f1f3f4;
+    --bg: #fafafa;
   }
 
   * { box-sizing: border-box; }
@@ -33,121 +32,115 @@
     color: var(--text-primary);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .container {
-    max-width: 720px;
+    max-width: 880px;
     margin: 0 auto;
-    padding: 48px 24px 80px;
+    padding: 64px 24px 96px;
   }
 
   /* Header */
   .header {
-    text-align: center;
+    text-align: left;
     margin-bottom: 32px;
-  }
-
-  .header-label {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-secondary);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
+    padding-left: 4px;
   }
 
   .header h1 {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 500;
     color: var(--text-primary);
     margin: 0;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.6px;
   }
 
-  /* Hero alert - the emphasized warning */
+  /* Hero alert */
   .hero-alert {
     background: var(--surface);
-    border-radius: 16px;
-    padding: 40px 36px;
-    margin-bottom: 24px;
-    box-shadow: 0 1px 2px 0 rgba(60,64,67,.08), 0 1px 3px 1px rgba(60,64,67,.06);
+    border-radius: 20px;
+    padding: 48px 48px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(60,64,67,.08), 0 4px 12px rgba(60,64,67,.05);
+    text-align: left;
     position: relative;
     overflow: hidden;
-    border-left: 4px solid var(--google-red);
   }
 
-  .hero-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: var(--google-red-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-
-  .hero-icon svg {
-    width: 28px;
-    height: 28px;
-    stroke: var(--google-red);
-    fill: none;
+  .hero-alert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--google-red);
   }
 
   .hero-eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 18px;
+    gap: 6px;
+    font-size: 13px;
     font-weight: 700;
     color: var(--google-red);
-    letter-spacing: -0.2px;
-    margin-bottom: 16px;
-    padding: 8px 16px;
+    letter-spacing: 0.3px;
+    margin-bottom: 24px;
+    padding: 6px 14px;
     background: var(--google-red-bg);
     border-radius: 999px;
   }
 
+  .hero-eyebrow .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--google-red);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
   .hero-message {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1.45;
     color: var(--text-primary);
-    margin: 0 0 8px;
-    letter-spacing: -0.3px;
+    margin: 0 0 16px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-message .accent {
+    color: var(--google-red);
   }
 
   .hero-sub {
     font-size: 14px;
     color: var(--text-secondary);
     margin: 0;
+    line-height: 1.6;
   }
 
   /* Card */
   .card {
     background: var(--surface);
-    border-radius: 16px;
-    padding: 32px 36px;
+    border-radius: 20px;
+    padding: 40px 48px;
     margin-bottom: 16px;
-    box-shadow: 0 1px 2px 0 rgba(60,64,67,.08), 0 1px 3px 1px rgba(60,64,67,.06);
+    box-shadow: 0 1px 3px rgba(60,64,67,.08), 0 4px 12px rgba(60,64,67,.05);
   }
 
   .card-title {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--text-primary);
-    margin: 0 0 20px;
-  }
-
-  .card-title-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--google-blue);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin: 0 0 24px;
   }
 
   /* Info list */
@@ -159,29 +152,59 @@
 
   .info-list li {
     display: flex;
-    gap: 14px;
-    padding: 12px 0;
-    font-size: 14.5px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    border-bottom: 1px solid var(--hover);
+    gap: 16px;
+    padding: 16px 0;
+    font-size: 15px;
+    color: var(--text-primary);
+    line-height: 1.7;
+    border-bottom: 1px solid var(--border-soft);
   }
 
+  .info-list li:first-child { padding-top: 4px; }
   .info-list li:last-child {
     border-bottom: none;
+    padding-bottom: 4px;
   }
 
-  .info-list li .icon {
+  .info-list .icon-wrap {
     flex-shrink: 0;
-    width: 20px;
-    height: 20px;
-    margin-top: 2px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .info-list li.danger { color: var(--text-primary); }
-  .info-list li.danger .icon { color: var(--google-red); }
-  .info-list li.warning .icon { color: var(--google-yellow); }
-  .info-list li.info .icon { color: var(--google-blue); }
+  .info-list .icon-wrap.red {
+    background: var(--google-red-bg);
+    color: var(--google-red);
+  }
+
+  .info-list .icon-wrap.blue {
+    background: var(--google-blue-bg);
+    color: var(--google-blue);
+  }
+
+  .info-list .icon-wrap svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .info-list .text {
+    flex: 1;
+    padding-top: 4px;
+  }
+
+  .info-list strong {
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .info-list .text .highlight {
+    color: var(--google-red);
+    font-weight: 700;
+  }
 
   /* Action steps */
   .steps {
@@ -194,37 +217,42 @@
   .step {
     counter-increment: step;
     display: flex;
-    gap: 16px;
+    gap: 18px;
     padding: 16px 0;
-    border-bottom: 1px solid var(--hover);
+    border-bottom: 1px solid var(--border-soft);
+    position: relative;
   }
 
-  .step:last-child { border-bottom: none; }
+  .step:first-child { padding-top: 4px; }
+  .step:last-child {
+    border-bottom: none;
+    padding-bottom: 4px;
+  }
 
   .step-number {
     flex-shrink: 0;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    background: var(--google-blue);
-    color: #fff;
+    background: var(--google-blue-bg);
+    color: var(--google-blue);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 2px;
   }
 
   .step-content {
     flex: 1;
-    padding-top: 4px;
   }
 
   .step-content p {
     margin: 0;
-    font-size: 14.5px;
+    font-size: 15px;
     color: var(--text-primary);
-    line-height: 1.6;
+    line-height: 1.7;
   }
 
   .step-content strong {
@@ -232,65 +260,58 @@
     color: var(--text-primary);
   }
 
-  .step-content em {
-    font-style: normal;
-    font-weight: 700;
-    color: var(--google-blue);
-  }
-
   /* Footer */
   .footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 48px;
     padding: 24px 8px 0;
     border-top: 1px solid var(--border);
   }
 
   .footer-logos {
     display: flex;
-    gap: 24px;
+    gap: 20px;
     align-items: center;
   }
 
   .logo-seah {
-    font-family: 'Noto Sans KR', sans-serif;
     font-weight: 900;
-    font-size: 18px;
+    font-size: 17px;
     color: #1a3668;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
   }
 
   .logo-seah .accent { color: var(--google-red); }
 
   .logo-divider {
     width: 1px;
-    height: 16px;
+    height: 14px;
     background: var(--border);
   }
 
   .logo-vntg {
-    font-family: 'Noto Sans KR', sans-serif;
     font-weight: 900;
-    font-size: 15px;
+    font-size: 14px;
     color: #1a3668;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
   }
 
   .footer-meta {
     font-size: 12px;
     color: var(--text-tertiary);
+    letter-spacing: 0.3px;
   }
 
   /* Responsive */
   @media (max-width: 600px) {
-    .container { padding: 32px 16px 60px; }
+    .container { padding: 40px 16px 60px; }
     .header h1 { font-size: 22px; }
-    .hero-alert { padding: 28px 24px; }
-    .hero-message { font-size: 19px; }
-    .card { padding: 24px 20px; }
-    .footer { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .hero-alert { padding: 36px 24px; }
+    .hero-message { font-size: 20px; }
+    .card { padding: 28px 22px; }
+    .footer { flex-direction: column; gap: 14px; align-items: flex-start; }
   }
 </style>
 </head>
@@ -300,35 +321,56 @@
 
   <!-- Header -->
   <div class="header">
-
     <h1>악성 메일 모의훈련 안내</h1>
   </div>
 
   <!-- Hero Alert -->
   <div class="hero-alert">
-    <div class="hero-eyebrow">⚠ 훈련 결과 알림</div>
-    <h2 class="hero-message">귀하께서는 출처가 불분명한<br>메일의 링크를 실행하셨습니다.</h2>
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      훈련 결과 알림
+    </div>
+    <h2 class="hero-message">
+      귀하께서는 <span class="accent">출처가 불분명한 메일</span>의<br>
+      링크를 실행하셨습니다.
+    </h2>
     <p class="hero-sub">본 메일은 보안 인식 향상을 위한 악성 메일 모의훈련입니다.</p>
   </div>
 
   <!-- Detail Card -->
   <div class="card">
-    <h3 class="card-title"><span class="card-title-dot"></span>상황 안내</h3>
+    <h3 class="card-title">상황 안내</h3>
     <ul class="info-list">
-      <li class="danger">
-        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-        <span>실제 공격이었다면 <strong>악성코드 감염, 계정 탈취, 랜섬웨어</strong> 등 심각한 보안사고로 이어질 수 있는 상황이었습니다.</span>
+      <li>
+        <div class="icon-wrap red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+        </div>
+        <div class="text">
+          실제 공격이었다면 <strong>악성코드 감염, 계정 탈취, 랜섬웨어</strong> 등 심각한 보안사고로 이어질 수 있는 상황이었습니다.
+        </div>
       </li>
-      <li class="info">
-        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 12c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08C16.71 17.72 14.5 19 12 19z"/></svg>
-        <span>효과적인 훈련 진행을 위하여 메일 수신 후 <strong>타 부서 및 구성원에 절대 공유하지 말아주십시오.</strong></span>
+      <li>
+        <div class="icon-wrap blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div class="text">
+          효과적인 훈련 진행을 위하여 메일 수신 후 <strong>타 부서 및 구성원에 절대 공유하지 말아주십시오.</strong>
+        </div>
       </li>
     </ul>
   </div>
 
   <!-- Action Steps Card -->
   <div class="card">
-    <h3 class="card-title"><span class="card-title-dot"></span>악성 메일 대응 안내</h3>
+    <h3 class="card-title">악성 메일 대응 방법</h3>
     <ol class="steps">
       <li class="step">
         <div class="step-number">1</div>
@@ -351,7 +393,7 @@
       <li class="step">
         <div class="step-number">4</div>
         <div class="step-content">
-          <p>불법 소프트웨어(토렌트와 같은 <strong>P2P</strong>)나 인터넷 혹은 블로그에서 파일 다운로드 금지</p>
+          <p>불법 소프트웨어(토렌트와 같은 <strong>P2P</strong>)나 인터넷 혹은 블로그에서 <strong>파일 다운로드 금지</strong></p>
         </div>
       </li>
     </ol>
